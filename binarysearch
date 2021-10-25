@@ -1,0 +1,25 @@
+#include <stdio.h>
+int newfun(int arr[],int str,int end,int element)
+{
+    int mid=(str+end)/2;
+    if(end>=str)
+    {
+        if(arr[mid]==element)
+          return mid;
+        else if(arr[mid]<element)
+         return newfun(arr,mid+1,end,element);
+        else
+          return newfun(arr,str,mid-1,element);
+    }
+    return -1;
+}
+int main()
+{
+    int arr[]={1,2,3,4,5,6,7,8,9};
+    int element=5;
+    int str=0;
+    int end = sizeof(arr)/sizeof(arr[0]);
+    int new=newfun(arr,str,end-1,element);
+    printf("index is %d",new);
+    return 0;
+}
